@@ -1,1 +1,1 @@
-server: go run server.go
+release: go run server.go
