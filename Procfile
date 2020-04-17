@@ -1,1 +1,1 @@
-release: go run server.go
+web: go run server.go

@@ -4,17 +4,17 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"os"
 )
 
 func main() {
-	server := &http.Server{
-		Addr: ":8080",
+	err := http.ListenAndServe(":"+os.Getenv("PORT"), nil)
+	if err != nil {
+		panic(err)
 	}
-
 	http.HandleFunc("/", halo)
 
-	fmt.Println("Server started on port 8080")
-	server.ListenAndServe()
+	fmt.Println("Server started on port " + os.Getenv("PORT"))
 }
 
 func halo(w http.ResponseWriter, r *http.Request) {
