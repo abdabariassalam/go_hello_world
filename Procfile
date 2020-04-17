@@ -1,1 +1,1 @@
-web: go run server.go
+web: go_hello_world
