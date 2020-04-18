@@ -1,21 +1,19 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
-	"encoding/json"
+	"os"
 )
 
 func main() {
-	server := &http.Server{
-		Addr: ":1234",
-	}
-
-
 	http.HandleFunc("/", halo)
-
 	fmt.Println("Server started on port 1234")
-	server.ListenAndServe()
+	err := http.ListenAndServe(":"+os.Getenv("PORT"), nil)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func halo(w http.ResponseWriter, r *http.Request) {
@@ -33,7 +31,7 @@ func halo(w http.ResponseWriter, r *http.Request) {
 	}{
 
 		Status:  "Success",
-		Message: "Hello "+msg,
+		Message: "Hello " + msg,
 	}
 
 	response, err := json.Marshal(payload)
