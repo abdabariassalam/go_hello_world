@@ -1,0 +1,6 @@
+{
+	"heroku": {
+		"goVersion": "go1.14"
+	},
+	"rootPath": "github.com/bariasabda/go_hello_world"
+}
